@@ -251,44 +251,46 @@ const About = () => {
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="py-20 px-4 bg-gradient-to-b from-transparent to-primary-50/50 dark:to-primary-900/10">
+      {/* Timeline Section - Our Story */}
+      <section className="py-12 md:py-20 px-4 md:px-6 bg-gradient-to-b from-transparent to-primary-50/50 dark:to-primary-900/10">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={shouldAnimateEntry ? { opacity: 0, y: 20 } : false}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
           >
-            <h2 className="text-4xl font-bold text-gradient mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-4">
               Our Story
             </h2>
           </motion.div>
 
           <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary-200 dark:bg-primary-800" />
-            
-            <div className="space-y-12">
+            {/* Line: left-aligned on mobile, centered on desktop */}
+            <div className="absolute left-6 md:left-1/2 md:transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 md:w-1 bg-primary-200 dark:bg-primary-800" />
+
+            <div className="space-y-8 md:space-y-12">
               {timeline.map((event, index) => (
                 <motion.div
                   key={index}
                   initial={shouldAnimateEntry ? { opacity: 0, x: index % 2 === 0 ? -30 : 30 } : false}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`flex items-center ${index % 2 === 0 ? 'flex-row-reverse' : ''}`}
+                  className={`flex flex-col md:flex-row md:items-center gap-4 md:gap-0 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
                 >
-                  <div className="w-1/2" />
-                  <div className="relative flex items-center justify-center w-12 h-12 bg-primary-600 rounded-full border-4 border-white dark:border-gray-900 z-10">
+                  {/* Spacer: hidden on mobile so dot + content sit left-to-right; on desktop provides alternating half width */}
+                  <div className="hidden md:block md:w-1/2" />
+                  <div className="relative flex items-center justify-center w-12 h-12 flex-shrink-0 bg-primary-600 rounded-full border-4 border-white dark:border-gray-900 z-10">
                     <div className="w-4 h-4 bg-white rounded-full" />
                   </div>
-                  <div className="w-1/2 px-8">
-                    <Card>
+                  <div className="flex-1 min-w-0 md:w-1/2 md:px-8">
+                    <Card className="w-full">
                       <div className="text-sm font-semibold text-primary-600 mb-2">
                         {event.year}
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                      <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-2">
                         {event.title}
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300">
+                      <p className="text-sm md:text-base text-gray-600 dark:text-gray-300">
                         {event.description}
                       </p>
                     </Card>
