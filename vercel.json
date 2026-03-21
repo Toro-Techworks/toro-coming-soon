@@ -1,8 +1,16 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/toro.ico",
+      "dest": "/toro.ico"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/toro.ico"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
